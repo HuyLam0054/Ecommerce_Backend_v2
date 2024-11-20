@@ -1,25 +1,19 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
-import { ConfigModule } from '@nestjs/config';
-import { ThrottlerModule } from '@nestjs/throttler';
-import { UserModule } from './modules/users/user.module';
+import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
+import { UsersModule } from './users/users.module';
+import { OwnerModule } from './owners/owner.module';
 
+// const url_db: string = process.env.URL_Mongodb as string;
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true }),
-    ThrottlerModule.forRoot({ limit: 10, ttl: 60 }),
-    MongooseModule.forRoot(process.env.DATABASE_URI, {
-      dbName: process.env.DATABASE_NAME,
-      auth: {
-        username: process.env.DATABASE_USER,
-        password: process.env.DATABASE_PASS,
-      },
-    }),
-
-    // feature module
-    UserModule,
+    MongooseModule.forRoot(
+      // url_db,
+      'mongodb+srv://huylam0054:huyLAMbinhhuy054@brianapple.mr7xd.mongodb.net/?retryWrites=true&w=majority&appName=BrianApple',
+    ),
+    UsersModule,
+    OwnerModule,
   ],
-  controllers: [AppController],
 })
 export class AppModule {}
