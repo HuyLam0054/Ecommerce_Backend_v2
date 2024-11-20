@@ -9,10 +9,10 @@ services:
       context: ./
       dockerfile: Dockerfile
     environment:
-      DATABASE_NAME: # DATABASE_NAME
-      DATABASE_USER: # DATABASE_USER
-      DATABASE_PASS: # DATABASE_PASS
-      DATABASE_URI: # DATABASE_URI, example: mongodb://database:27017
+      DATABASE_NAME: Brian_Apple_Mongodb
+      DATABASE_USER: root
+      DATABASE_PASS: 123456
+      DATABASE_URI: mongodb://database:27017
     ports:
       - '8088:8088'
     depends_on:
@@ -26,5 +26,5 @@ services:
     ports:
       - '27017:27017'
     environment:
-      MONGO_INITDB_ROOT_USERNAME: # DATABASE_NAME
-      MONGO_INITDB_ROOT_PASSWORD: # DATABASE_USER
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: 123456
